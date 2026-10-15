@@ -1,0 +1,23 @@
+workflows:
+  ios_unsigned:
+    name: Flutter iOS 未签名包(后续自签)
+    max_build_duration: 30
+    instance_type: mac_mini_m2
+    environment:
+      flutter: 3.47.7 # 改成你本地flutter版本
+      xcode: 15.4
+    scripts:
+      - name: flutter pub get
+        script: flutter pub get
+      - name: pod install
+        script: cd ios && pod install && cd ..
+      - name: Build iOS Release 不签名
+        script: flutter build ios --release --no-codesign --obfuscate --split-debug-info=build/debug
+      - name: 打包Payload生成未签名ipa
+        script: |
+          mkdir -p build/ios/iphoneos/Payload
+          cp -r build/ios/iphoneos/Runner.app build/ios/iphoneos/Payload/
+          cd build/ios/iphoneos
+          zip -qr Runner.ipa Payload
+    artifacts:
+      - build/ios/iphoneos/Runner.ipa
