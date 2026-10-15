@@ -1,10 +1,10 @@
 workflows:
   ios_unsigned:
-    name: Flutter iOS 未签名包
-    max_build_duration: 30
+    name: Flutter iOS Release未签名包
+    max_build_duration: 40
     instance_type: mac_mini_m2
     environment:
-      flutter: 3.47.7
+      flutter: stable
     scripts:
       - name: flutter pub get
         script: flutter pub get

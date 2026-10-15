@@ -165,10 +165,10 @@ packages:
     dependency: transitive
     description:
       name: file_picker_darwin
-      sha256: c40e125317842be577a05ffa111655094d7ff52734e3bbb328829c0d5c23fe14
+      sha256: "576ed6c1148a466913ceef8c19aed71011402351de46acd97732c50e5392f21e"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.3.0"
+    version: "2.3.1"
   file_picker_linux:
     dependency: transitive
     description:
