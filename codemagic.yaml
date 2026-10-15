@@ -6,10 +6,12 @@ workflows:
     environment:
       flutter: stable
     scripts:
+      - name: 预热 iOS 工具链
+        script: flutter precache --ios
       - name: flutter pub get
         script: flutter pub get
-      - name: pod install
-        script: cd ios && pod install && cd ..
+      - name: pod install 刷新规格
+        script: cd ios && pod install --repo-update || true
       - name: Build iOS Release 不签名
         script: flutter build ios --release --no-codesign
       - name: 打包生成未签名 ipa
